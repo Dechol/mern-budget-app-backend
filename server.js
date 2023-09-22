@@ -12,7 +12,11 @@ const userRoutes = require('./routes/user')
 const app = express()
 
 //middleware
-app.use(cors())
+app.use(cors(
+    {
+        origin:'https://budgetfrontend.onrender.com',
+    }
+))
 
 app.use(express.json())
 
@@ -33,6 +37,3 @@ mongoose.connect(process.env.MONGO_URI)
     })
 })
 .catch(err => console.log(err))
-
-
-

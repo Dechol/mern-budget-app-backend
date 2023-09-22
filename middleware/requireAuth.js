@@ -5,7 +5,6 @@ const requireAuth = async (req,res,next) => {
 
     //verify auth
     const { authorization } = req.headers
-    console.log('auth header: ',req.headers.authorization)
 
     if(!authorization){
         return res.status(401).json({error: 'authorization token required'})
@@ -18,12 +17,10 @@ const requireAuth = async (req,res,next) => {
 
         req.user = await User.findOne({_id}).select('_id')
         next()
-
     } catch(error) {
         console.log(error)
         res.status(401).json({error: 'req not authorized'})
     }
-
 }
 
 module.exports = requireAuth

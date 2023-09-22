@@ -26,6 +26,7 @@ const getTran = async(req,res)=>{
 
 //POST new transaction
 const createTran = async (req,res)=>{
+    console.log(req.body)
     const {desc , amount , category, isHighlighted, isIncome} = req.body
 
     let emptyFields = []
@@ -73,6 +74,7 @@ const deleteTran = async(req,res) => {
 //PATCH a transaction
 const updateTran = async(req,res) => {
     const {id} = req.params
+    console.log('req body: ',req.body)
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         res.status(400).json({error:'tran id not valid'})
@@ -80,6 +82,7 @@ const updateTran = async(req,res) => {
     const tran = await Tran.findOneAndUpdate({_id:id},{
         ...req.body
     })
+    console.log('const tran : ',tran)
 
     if(!tran){
         return res.status(400).json({error:'no such transaction'})
