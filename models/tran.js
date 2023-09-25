@@ -19,7 +19,8 @@ const tranSchema = new Schema({
         type: Boolean,
         default: false,
     },
-    isHighlighted:{
+    date: Date,
+    isHighlight:{
         type:Boolean,
         default: false
     },

@@ -27,7 +27,7 @@ const getTran = async(req,res)=>{
 //POST new transaction
 const createTran = async (req,res)=>{
     console.log(req.body)
-    const {desc , amount , category, isHighlighted, isIncome} = req.body
+    const {desc , amount , category, isIncome, date, isRecurring, isHighlight } = req.body
 
     let emptyFields = []
 
@@ -47,8 +47,10 @@ const createTran = async (req,res)=>{
             desc,
             amount,
             category,
-            isHighlighted,
             isIncome,
+            date,
+            isRecurring,
+            isHighlight,
             user_id
         })
         res.status(200).json(tran)
